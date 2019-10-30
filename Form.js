@@ -1,7 +1,6 @@
-import React, {Component} from "react";
+import React, {useContext} from "react";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import Button from "@material-ui/core/Button"; 
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -34,12 +33,10 @@ const words = {
         password:"PW",
         remember:"Save ID"
     }
-}
-class Form extends Component { 
-    static contextType = LanguageContext;
-    render(){
-        const {language, changeLanguage} = this.context;
-        const {classes} = this.props; 
+} 
+function Form(props){ 
+        const {language, changeLanguage} = useContext(LanguageContext);
+        const {classes} = props; 
         const {email, signIn, password, remember} = words[language];
 
     return (
@@ -69,6 +66,6 @@ class Form extends Component {
             </Paper>
         </main>
     )
-}}
+}
 
 export default withStyles(styles)(Form);
